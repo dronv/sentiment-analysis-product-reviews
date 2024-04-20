@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Data Dashboard</h1>
+    <div id="graph_sentiment_count"></div>
+    <div id="graph_category"></div>
+    <script>
+       var sentiment_count_based_graph = JSON.parse('{{ sentiment_graph_json | safe }}');
+        var category_based_graph = JSON.parse('{{ category_sentiment_graph_json | safe }}');
+
+        // Display the Plotly graphs
+        Plotly.newPlot('graph_sentiment_count', sentiment_count_based_graph.data, sentiment_count_based_graph.layout, { responsive: true });
+        Plotly.newPlot('graph_category', category_based_graph.data, category_based_graph.layout, { responsive: true });
+    </script>
+</body>
+</html>
